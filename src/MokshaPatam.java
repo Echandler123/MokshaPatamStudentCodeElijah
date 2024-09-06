@@ -18,9 +18,7 @@ public class MokshaPatam {
      *  to reach the final square on a board with the given size, ladders, and snakes.
      */
     public int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
-        int moves = 0;
         Queue<Integer> myQueue = new LinkedList<Integer>();
-        int rolls = 0;
         int num = 1;
         int[] map = new int[boardsize];
         int start = 0;
@@ -42,12 +40,6 @@ public class MokshaPatam {
                 }
 
             }
-
-
-
-
-
-
 
         }
         return 0;
