@@ -19,65 +19,38 @@ public class MokshaPatam {
      */
     public int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
         int moves = 0;
-        Node nodeone = new Node();
-        Queue<Node> myQueue = new LinkedList<Node>();
-        myQueue.add(nodeone);
+        Queue<Integer> myQueue = new LinkedList<Integer>();
+        int rolls = 0;
         int num = 1;
-        for(int i = 1; i < boardsize;i++);{
-            num++;
-            myQueue.add(new Node(num));
+        int[] map = new int[boardsize];
+        int start = 0;
+        int rollnum = 0;
+        for(int i = 0; i < boardsize;i++) {
+            if(i == ladders[start][0] || i == snakes[start][start]);{
+                map[i] = ladders[start][start];
+            }
         }
-        while(myQueue.size() > 0){
-            moves ++;
-            Node Currentnode = myQueue.remove();
-            if(Currentnode.getNodeup().visited == false){
-                myQueue.add(Currentnode.getNodeup());
+        while(myQueue.size() > 0) {
+            int currentnode = myQueue.remove();
+            if(currentnode == boardsize);{
+                return rollnum;
             }
-            if(Currentnode.getNodedown().visited == false){
-                myQueue.add(Currentnode.getNodedown());
+            for(int i =0; i < 6; i++) {
+                int node = map[currentnode+i];
+                if(){
+                    rollnum++;
+                }
+
             }
-            if(Currentnode.getVal() == boardsize);{
-                return moves;
-            }
+
+
+
+
+
+
+
         }
         return 0;
     }
-    public class Node{
-        private int val;
-        private Node nodeup;
-        private Node nodedown;
-        private boolean visited;
-        public Node(){
-            val = 1;
-        }
-        public Node(int val){
-            this.val = val;
-        }
 
-        public void setNodedown(Node nodedown) {
-            this.nodedown = nodedown;
-        }
-
-        public void setNodeup(Node nodeup) {
-            this.nodeup = nodeup;
-        }
-
-        public Node getNodedown() {
-            return nodedown;
-        }
-
-        public Node getNodeup() {
-            return nodeup;
-        }
-
-        public int getVal() {
-            return val;
-        }
-
-
-
-        public boolean isVisited() {
-            return visited;
-        }
-    }
 }
