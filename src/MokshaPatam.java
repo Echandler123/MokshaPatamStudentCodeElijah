@@ -19,30 +19,36 @@ public class MokshaPatam {
      */
     public int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
         Queue<Integer> myQueue = new LinkedList<Integer>();
-        int num = 1;
         int[] map = new int[boardsize];
         int start = 0;
         int rollnum = 0;
-        for(int i = 0; i < boardsize;i++) {
-            if(i == ladders[start][0] || i == snakes[start][start]);{
-                map[i] = ladders[start][start];
+        boolean[] isVisited = new boolean[boardsize];
+        for (int i = 0; i < boardsize; i++) {
+            if (i == ladders[start][0]) {
+                map[i] = ladders[start][1] - 1;
+                if (i == snakes[start][0]) {
+                    map[i] = snakes[start][1] - 1;
+                }
+            }
+            else {
+                map[i] = i;
             }
         }
-        while(myQueue.size() > 0) {
-            int currentnode = myQueue.remove();
-            if(currentnode == boardsize);{
+        while (myQueue.size() > 0) {
+            int currentNode = myQueue.remove();
+            if (currentNode == boardsize - 1){
                 return rollnum;
             }
-            for(int i =0; i < 6; i++) {
-                int node = map[currentnode+i];
-                if(){
-                    rollnum++;
+            for (int i = 0; i < 6; i++) {
+                int node = map[currentNode + i];
+                if (isVisited[node + i] == false) {
+                    isVisited[node + i] = true;
                 }
-
             }
-
+            rollnum++;
         }
-        return 0;
+        return -1;
     }
-
 }
+
+
